@@ -1,0 +1,184 @@
+/* ===== Overlay ===== */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(30, 10, 8, 0.62);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: overlayIn 220ms ease forwards;
+}
+
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ===== Modal card ===== */
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  background: #fffcf8;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow:
+    0 2px 0 rgba(197, 160, 40, 0.25),
+    0 30px 80px rgba(50, 10, 5, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  animation: modalIn 280ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  padding: 2rem 2.1rem 1.6rem;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.92) translateY(16px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ===== Top decorative band ===== */
+.topBand {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #800000 0%, #c5a028 50%, #800000 100%);
+}
+
+/* ===== Close button ===== */
+.closeBtn {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  border: 1px solid #e8d8c8;
+  background: #fff;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #7a5c52;
+  transition: background 160ms, color 160ms, transform 160ms;
+}
+.closeBtn:hover {
+  background: #800000;
+  color: #fff;
+  border-color: #800000;
+  transform: rotate(90deg);
+}
+
+/* ===== Brand mark (logo) ===== */
+.brandMark {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+.brandMark img {
+  height: 52px;
+  width: auto;
+  max-width: 220px;
+  object-fit: contain;
+}
+
+/* ===== Heading ===== */
+.title {
+  text-align: center;
+  font-family: var(--font-heading), "Georgia", serif;
+  font-size: 1.95rem;
+  font-weight: 700;
+  color: #3b0b08;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin-bottom: 0.3rem;
+}
+.subtitle {
+  text-align: center;
+  font-size: 0.76rem;
+  color: #8a6a5e;
+  margin-bottom: 1.6rem;
+  line-height: 1.6;
+}
+
+/* ===== Actions ===== */
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.1rem;
+}
+
+/* ===== Primary button (anchor styled as button) ===== */
+.primaryBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.8rem;
+  background: linear-gradient(135deg, #800000 0%, #5e0000 100%);
+  color: #ffe8d2;
+  border-radius: 10px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 180ms, transform 180ms, box-shadow 180ms;
+  box-shadow: 0 4px 16px rgba(128, 0, 0, 0.28);
+  position: relative;
+  overflow: hidden;
+}
+.primaryBtn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+.primaryBtn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 7px 22px rgba(128, 0, 0, 0.35);
+}
+.primaryBtn:active { transform: translateY(0); }
+
+/* ===== Note text ===== */
+.note {
+  text-align: center;
+  font-size: 0.68rem;
+  color: #a08070;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+/* ===== Bottom ornament ===== */
+.ornament {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.2rem;
+}
+.ornament span {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #e0ccbd);
+}
+.ornament span:last-child {
+  background: linear-gradient(90deg, #e0ccbd, transparent);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+  .modal {
+    padding: 1.7rem 1.4rem 1.3rem;
+    border-radius: 16px;
+  }
+  .title { font-size: 1.65rem; }
+}

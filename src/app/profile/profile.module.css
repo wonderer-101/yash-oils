@@ -1,0 +1,1189 @@
+.page {
+  min-height: 80vh;
+  background: linear-gradient(160deg, #f9f5f0 0%, #f2ebe0 100%);
+  padding: 1.8rem 0 3rem;
+}
+
+.shell {
+  width: min(940px, 94vw);
+  margin: 0 auto;
+  display: grid;
+  gap: 1.1rem;
+}
+
+/* Hero card */
+.heroCard {
+  background: linear-gradient(135deg, #800000 0%, #5a0000 100%);
+  border-radius: 22px;
+  padding: 1.6rem 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: 0 20px 48px rgba(90, 0, 0, 0.28);
+}
+
+.heroLeft {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.avatar {
+  width: 58px;
+  height: 58px;
+  border-radius: 999px;
+  background: rgba(255, 235, 190, 0.22);
+  border: 2px solid rgba(255, 220, 160, 0.35);
+  color: #ffefc4;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+}
+
+.heroInfo {
+  min-width: 0;
+}
+
+.heroName {
+  color: #fff8ec;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1;
+  margin: 0;
+}
+
+.heroEmail {
+  margin: 0.35rem 0 0;
+  color: rgba(255, 235, 200, 0.76);
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.83rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.logoutBtn {
+  border: 1px solid rgba(255, 220, 180, 0.3);
+  background: rgba(255, 240, 210, 0.1);
+  color: rgba(255, 230, 190, 0.9);
+  border-radius: 999px;
+  padding: 0.48rem 1rem;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  cursor: pointer;
+  transition: background-color 160ms ease, border-color 160ms ease;
+  flex: 0 0 auto;
+  text-decoration: none;
+}
+
+.logoutBtn:hover {
+  background: rgba(255, 240, 210, 0.2);
+  border-color: rgba(255, 220, 180, 0.5);
+}
+
+/* Stats row */
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.statCard {
+  background: linear-gradient(180deg, #fffefc 0%, #fff9f3 100%);
+  border: 1px solid #ecd8c7;
+  border-radius: 16px;
+  padding: 0.95rem 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  box-shadow: 0 7px 22px rgba(64, 24, 8, 0.08);
+  text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.statCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 11px 30px rgba(64, 24, 8, 0.12);
+  border-color: #e3c8b0;
+}
+
+.statIconWrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  border: 1px solid #f0ddcd;
+  flex: 0 0 auto;
+}
+
+.statIcon {
+  color: #800000;
+}
+
+.statCopy {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.14rem;
+}
+
+.statValue {
+  color: #1c1410;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: 1.65rem;
+  font-weight: 700;
+  line-height: 0.95;
+}
+
+.statTextValue {
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 1.02rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+.statLabel {
+  color: #7a6a5e;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 2px solid #e8ddd2;
+  padding-bottom: 0;
+}
+
+.tab {
+  border: 0;
+  background: transparent;
+  color: #7a6a5e;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.84rem;
+  font-weight: 700;
+  padding: 0.6rem 1rem 0.8rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: color 150ms ease, border-color 150ms ease;
+}
+
+.tab[data-active="true"] {
+  color: #800000;
+  border-bottom-color: #800000;
+}
+
+.tab:hover:not([data-active="true"]) {
+  color: #4a3028;
+}
+
+/* Tab content */
+.tabContent {
+  min-height: 280px;
+}
+
+/* Orders */
+.ordersList {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.orderCard {
+  background: #fff;
+  border: 1px solid #ecddd0;
+  border-radius: 18px;
+  padding: 1.1rem 1.2rem;
+  box-shadow: 0 4px 16px rgba(64, 24, 8, 0.06);
+}
+
+.orderHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.orderMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+}
+
+.orderName {
+  color: #1c1410;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.orderDate {
+  color: #8a7a6e;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.76rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.orderRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.42rem;
+}
+
+.orderTotal {
+  color: #1d1611;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.012em;
+  line-height: 1.05;
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+  white-space: nowrap;
+}
+
+.orderTrackBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  background: #800000;
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.32rem 0.72rem;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 150ms ease;
+}
+
+.orderTrackBtn:hover {
+  background: #640000;
+}
+
+.orderBadges {
+  margin-top: 0.58rem;
+  display: flex;
+  gap: 0.42rem;
+  flex-wrap: wrap;
+}
+
+/* Status badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  border-radius: 999px;
+  padding: 0.26rem 0.62rem;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  letter-spacing: 0.02em;
+}
+
+.badge--success { background: #e8f7ee; color: #1a6e3c; }
+.badge--info    { background: #e6f1fc; color: #1a4a8e; }
+.badge--pending { background: #fef6e4; color: #7a5a10; }
+.badge--error   { background: #fde8e8; color: #8e1c1c; }
+
+/* Line items */
+.lineItems {
+  margin-top: 0.85rem;
+  border-top: 1px solid #f0e6da;
+  padding-top: 0.75rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.lineItem {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.lineItemImg {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1px solid #edddd0;
+  flex: 0 0 auto;
+}
+
+.lineItemImgFallback {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  border: 1px solid #edddd0;
+  background: #f4ede3;
+  display: grid;
+  place-items: center;
+  color: #9a8a7e;
+  flex: 0 0 auto;
+}
+
+.lineItemInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+}
+
+.lineItemTitle {
+  color: #2a1e18;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lineItemQty {
+  color: #8a7a6e;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.72rem;
+}
+
+.lineItemPrice {
+  color: #2a1e18;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+
+/* Empty state */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.emptyIcon {
+  color: #c8b0a0;
+}
+
+.emptyState h3 {
+  margin: 0;
+  color: #2a1e18;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.emptyState p {
+  margin: 0;
+  color: #7a6a5e;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.88rem;
+  max-width: 340px;
+}
+
+.shopBtn {
+  margin-top: 0.5rem;
+  background: #800000;
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.65rem 1.6rem;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 150ms ease;
+}
+
+.shopBtn:hover {
+  background: #640000;
+}
+
+/* Account details */
+.detailsCard {
+  background: #fff;
+  border: 1px solid #ecddd0;
+  border-radius: 18px;
+  padding: 1.4rem 1.5rem;
+  box-shadow: 0 4px 16px rgba(64, 24, 8, 0.06);
+}
+
+.detailsTitle {
+  margin: 0 0 1rem;
+  color: #1c1410;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.detailField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+}
+
+.detailField label {
+  color: #8a7a6e;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.detailField span {
+  color: #1c1410;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.94rem;
+  font-weight: 600;
+}
+
+.detailsNote {
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #f0e6da;
+  color: #7a6a5e;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.82rem;
+}
+
+.detailsNote a {
+  color: #800000;
+  font-weight: 700;
+}
+
+.detailsActions {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.detailsActionBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #800000;
+  color: #800000;
+  border-radius: 999px;
+  padding: 0.45rem 0.95rem;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.detailsActionBtn:hover {
+  background: #800000;
+  color: #fff;
+}
+
+.sectionHeading {
+  margin: 0;
+  color: #1e1511;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.profileEditForm,
+.addressForm {
+  margin-top: 1rem;
+  border: 1px solid #efe3d8;
+  border-radius: 14px;
+  padding: 0.9rem;
+  background: #fffaf6;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+}
+
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.formField span {
+  color: #816f62;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.formField input {
+  border: 1px solid #dbc9ba;
+  border-radius: 10px;
+  min-height: 36px;
+  padding: 0.5rem 0.65rem;
+  color: #2b1f19;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.84rem;
+  font-weight: 600;
+  background: #fff;
+}
+
+.formField input:focus {
+  outline: none;
+  border-color: #800000;
+  box-shadow: 0 0 0 2px rgba(128, 0, 0, 0.12);
+}
+
+.formActions {
+  margin-top: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.primaryActionBtn,
+.secondaryActionBtn {
+  border-radius: 999px;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.45rem 0.95rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  text-decoration: none;
+}
+
+.primaryActionBtn {
+  border: 1px solid #800000;
+  background: #800000;
+  color: #fff;
+}
+
+.primaryActionBtn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.secondaryActionBtn {
+  border: 1px solid #cdb7a6;
+  background: #fff;
+  color: #6d584d;
+}
+
+.secondaryActionBtn:hover {
+  border-color: #800000;
+  color: #800000;
+}
+
+.formError {
+  color: #8e1c1c;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.formSuccess {
+  color: #1e7a44;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.addressSection {
+  margin-top: 1rem;
+}
+
+.addressSectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.inlineHint {
+  margin-top: 0.6rem;
+  color: #7e6d62;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.8rem;
+}
+
+.addressList {
+  margin-top: 0.7rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.addressCard {
+  border: 1px solid #eddfd4;
+  border-radius: 12px;
+  padding: 0.72rem 0.8rem;
+  background: #fff;
+}
+
+.addressTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.addressTitleWrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #2b1e18;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.8rem;
+}
+
+.defaultBadge {
+  border-radius: 999px;
+  background: #f8eadb;
+  color: #7a3c06;
+  border: 1px solid #e6c9a7;
+  padding: 0.08rem 0.45rem;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.addressActions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.addressActions button {
+  border: 1px solid #ddcabc;
+  background: #fff;
+  color: #6d584d;
+  border-radius: 999px;
+  padding: 0.25rem 0.62rem;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.addressActions button:hover {
+  border-color: #800000;
+  color: #800000;
+}
+
+.addressText {
+  margin: 0.55rem 0 0;
+  color: #3a2b24;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.addressSubText {
+  margin: 0.25rem 0 0;
+  color: #7e6d62;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.75rem;
+}
+
+.checkboxRow {
+  margin-top: 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #5b473d;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.checkboxRow input {
+  margin: 0;
+}
+
+/* Loading */
+.loadingShell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 0.8rem;
+  color: #7a6a5e;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.88rem;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #ecddd0;
+  border-top-color: #800000;
+  border-radius: 999px;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 760px) {
+  .page {
+    padding: 1rem 0 2rem;
+  }
+
+  .shell {
+    width: min(980px, 96vw);
+    gap: 0.85rem;
+  }
+
+  .heroCard {
+    border-radius: 16px;
+    gap: 0.9rem;
+    padding: 1rem;
+    box-shadow: 0 12px 32px rgba(90, 0, 0, 0.22);
+  }
+
+  .heroLeft {
+    gap: 0.8rem;
+  }
+
+  .avatar {
+    width: 50px;
+    height: 50px;
+    font-size: 1.35rem;
+  }
+
+  .heroName {
+    font-size: clamp(1.28rem, 6vw, 1.65rem);
+  }
+
+  .heroEmail {
+    font-size: 0.76rem;
+    margin-top: 0.28rem;
+  }
+
+  .logoutBtn {
+    width: 100%;
+    justify-content: center;
+    min-height: 36px;
+  }
+
+  .statsRow {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.65rem;
+  }
+
+  .tabContent {
+    min-height: 220px;
+  }
+
+  .tabs {
+    gap: 0.45rem;
+    border-bottom: 0;
+    overflow-x: auto;
+    padding: 0.1rem 0.1rem 0.15rem;
+    scrollbar-width: none;
+  }
+
+  .tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab {
+    flex: 0 0 auto;
+    border: 1px solid #dcc8b8;
+    border-radius: 999px;
+    background: #fff;
+    color: #6f5b4e;
+    margin-bottom: 0;
+    min-height: 36px;
+    padding: 0.42rem 0.8rem;
+    font-size: 0.78rem;
+    white-space: nowrap;
+  }
+
+  .tab[data-active="true"] {
+    background: #800000;
+    border-color: #800000;
+    color: #fff;
+  }
+
+  .orderCard {
+    border-radius: 14px;
+    padding: 0.85rem;
+  }
+
+  .orderHeader {
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .orderName {
+    font-size: 1.1rem;
+  }
+
+  .orderDate {
+    font-size: 0.71rem;
+  }
+
+  .orderRight {
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  .orderTotal {
+    font-size: 1.02rem;
+  }
+
+  .orderTrackBtn {
+    min-height: 30px;
+    padding: 0.25rem 0.65rem;
+    font-size: 0.7rem;
+  }
+
+  .orderBadges {
+    margin-top: 0.5rem;
+  }
+
+  .lineItems {
+    margin-top: 0.6rem;
+    padding-top: 0.62rem;
+    gap: 0.48rem;
+  }
+
+  .lineItemImg,
+  .lineItemImgFallback {
+    width: 40px;
+    height: 40px;
+    border-radius: 9px;
+  }
+
+  .lineItemTitle {
+    font-size: 0.76rem;
+  }
+
+  .lineItemQty {
+    font-size: 0.68rem;
+  }
+
+  .lineItemPrice {
+    font-size: 0.82rem;
+  }
+
+  .detailsCard {
+    border-radius: 14px;
+    padding: 0.95rem 0.85rem;
+  }
+
+  .detailsTitle {
+    font-size: 1.22rem;
+    margin-bottom: 0.78rem;
+  }
+
+  .detailsGrid {
+    grid-template-columns: 1fr;
+    gap: 0.68rem;
+  }
+
+  .detailField label {
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+  }
+
+  .detailField span {
+    font-size: 0.87rem;
+  }
+
+  .sectionHeading {
+    font-size: 1.06rem;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 0.58rem;
+  }
+
+  .profileEditForm,
+  .addressForm {
+    margin-top: 0.78rem;
+    border-radius: 12px;
+    padding: 0.72rem;
+  }
+
+  .formField span {
+    font-size: 0.64rem;
+    letter-spacing: 0.07em;
+  }
+
+  .formField input {
+    min-height: 40px;
+    font-size: 0.82rem;
+  }
+
+  .formActions {
+    margin-top: 0.7rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+    align-items: stretch;
+  }
+
+  .primaryActionBtn,
+  .secondaryActionBtn,
+  .detailsActionBtn {
+    width: 100%;
+    justify-content: center;
+    min-height: 36px;
+    padding: 0.42rem 0.9rem;
+    font-size: 0.75rem;
+  }
+
+  .addressSection {
+    margin-top: 0.82rem;
+  }
+
+  .addressSectionHeader {
+    align-items: stretch;
+  }
+
+  .inlineHint {
+    margin-top: 0.5rem;
+    font-size: 0.73rem;
+  }
+
+  .addressCard {
+    border-radius: 11px;
+    padding: 0.65rem 0.65rem;
+  }
+
+  .addressTop {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.45rem;
+  }
+
+  .addressTitleWrap {
+    font-size: 0.74rem;
+  }
+
+  .addressActions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .addressActions button {
+    justify-content: center;
+    min-height: 32px;
+    font-size: 0.68rem;
+    padding: 0.22rem 0.45rem;
+  }
+
+  .addressText {
+    font-size: 0.74rem;
+    line-height: 1.35;
+    margin-top: 0.48rem;
+  }
+
+  .addressSubText {
+    font-size: 0.7rem;
+  }
+
+  .detailsNote {
+    margin-top: 0.95rem;
+    padding-top: 0.78rem;
+    font-size: 0.74rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 0.78rem 0 1.6rem;
+  }
+
+  .shell {
+    width: min(980px, 97vw);
+    gap: 0.72rem;
+  }
+
+  .heroCard {
+    border-radius: 14px;
+    padding: 0.82rem 0.74rem;
+  }
+
+  .heroEmail {
+    font-size: 0.72rem;
+  }
+
+  .statsRow {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .statCard {
+    border-radius: 12px;
+    padding: 0.62rem 0.52rem;
+    gap: 0.48rem;
+  }
+
+  .statIconWrap {
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+  }
+
+  .statValue {
+    font-size: 1.18rem;
+  }
+
+  .statTextValue {
+    font-size: 0.82rem;
+  }
+
+  .statLabel {
+    font-size: 0.62rem;
+  }
+
+  .tabs {
+    gap: 0.4rem;
+  }
+
+  .tab {
+    min-height: 34px;
+    font-size: 0.72rem;
+    padding: 0.38rem 0.62rem;
+    gap: 0.28rem;
+  }
+
+  .orderCard {
+    border-radius: 12px;
+    padding: 0.68rem;
+  }
+
+  .orderName {
+    font-size: 0.98rem;
+  }
+
+  .orderTotal {
+    font-size: 0.92rem;
+  }
+
+  .lineItem {
+    gap: 0.5rem;
+  }
+
+  .lineItemImg,
+  .lineItemImgFallback {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+  }
+
+  .lineItemTitle {
+    font-size: 0.72rem;
+  }
+
+  .lineItemPrice {
+    font-size: 0.76rem;
+  }
+
+  .detailsCard {
+    border-radius: 12px;
+    padding: 0.75rem 0.68rem;
+  }
+
+  .detailsTitle {
+    font-size: 1.1rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .sectionHeading {
+    font-size: 0.96rem;
+  }
+
+  .profileEditForm,
+  .addressForm {
+    padding: 0.62rem;
+    border-radius: 10px;
+  }
+
+  .formField input {
+    min-height: 37px;
+    border-radius: 9px;
+    font-size: 0.78rem;
+    padding: 0.44rem 0.55rem;
+  }
+
+  .primaryActionBtn,
+  .secondaryActionBtn,
+  .detailsActionBtn {
+    min-height: 34px;
+    font-size: 0.71rem;
+  }
+
+  .addressActions button {
+    min-height: 30px;
+    font-size: 0.66rem;
+  }
+
+  .addressText {
+    font-size: 0.71rem;
+  }
+
+  .addressSubText,
+  .detailsNote,
+  .inlineHint {
+    font-size: 0.68rem;
+  }
+}

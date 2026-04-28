@@ -1,0 +1,487 @@
+.page {
+  width: min(1200px, 100% - 2rem);
+  margin: 1.1rem auto 0;
+}
+
+.hero {
+  background: linear-gradient(135deg, #ecf8f1 0%, #f8fbf2 55%, #ebf7ff 100%);
+  border: 1px solid var(--yw-line);
+  border-radius: 1.2rem;
+  padding: 2.1rem;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.heroContent h1 {
+  color: var(--yw-brand-dark);
+  font-size: clamp(2rem, 3.2vw, 3.1rem);
+  line-height: 1.05;
+}
+
+.eyebrow {
+  color: var(--yw-brand);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  font-size: 0.83rem;
+  margin-bottom: 0.65rem;
+  text-transform: uppercase;
+}
+
+.heroContent p {
+  margin-top: 0.95rem;
+  color: var(--yw-subtle);
+  font-size: 1rem;
+  line-height: 1.72;
+  max-width: 52ch;
+}
+
+.heroActions {
+  margin-top: 1.2rem;
+  display: flex;
+  gap: 0.65rem;
+}
+
+.primaryBtn,
+.secondaryBtn {
+  min-height: 2.7rem;
+  border-radius: 999px;
+  padding: 0 1.15rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.primaryBtn {
+  background: var(--yw-brand);
+  color: #fff;
+}
+
+.secondaryBtn {
+  border: 1px solid var(--yw-line);
+  background: #fff;
+  color: var(--yw-brand-dark);
+}
+
+.heroMedia {
+  border-radius: 1rem;
+  overflow: hidden;
+  background: #e9f5ef;
+  min-height: 325px;
+}
+
+.heroMedia img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.mediaFallback {
+  width: 100%;
+  height: 100%;
+  min-height: 325px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--yw-subtle);
+}
+
+.about {
+  margin-top: 2.9rem;
+  display: grid;
+  grid-template-columns: 0.78fr 1.22fr;
+  gap: 1.4rem;
+  align-items: start;
+}
+
+.aboutMedia {
+  border-radius: 1rem;
+  overflow: hidden;
+  aspect-ratio: 488 / 556;
+  height: auto;
+  border: 1px solid var(--yw-line);
+  width: min(100%, 390px);
+  justify-self: center;
+}
+
+.aboutMedia img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: top center;
+  display: block;
+}
+
+.aboutContent {
+  border: 1px solid var(--yw-line);
+  border-radius: 1rem;
+  padding: 1.65rem 1.55rem;
+  background: #fff;
+  min-height: 445px;
+}
+
+.aboutContent h2 {
+  color: var(--yw-brand-dark);
+  font-size: 2rem;
+}
+
+.aboutContent p {
+  margin-top: 0.8rem;
+  color: var(--yw-subtle);
+  font-size: 0.96rem;
+  line-height: 1.72;
+}
+
+.aboutContent ul {
+  margin-top: 0.7rem;
+  margin-left: 1rem;
+  display: grid;
+  gap: 0.3rem;
+  color: var(--yw-subtle);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.aboutTagline {
+  margin-top: 0.9rem;
+  color: var(--yw-brand-dark);
+  font-weight: 700;
+}
+
+.why {
+  margin-top: 2.9rem;
+  text-align: center;
+}
+
+.why h2 {
+  font-size: clamp(1.8rem, 2.5vw, 2.55rem);
+  color: var(--yw-brand-dark);
+}
+
+.why > p {
+  margin-top: 0.5rem;
+  color: var(--yw-subtle);
+}
+
+.whyLayout {
+  margin-top: 1.45rem;
+  display: grid;
+  grid-template-columns: minmax(140px, 1fr) minmax(220px, 320px) minmax(140px, 1fr);
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  column-gap: 1.45rem;
+  row-gap: 1.1rem;
+  align-items: center;
+}
+
+.whyPoint {
+  text-align: center;
+  justify-self: center;
+}
+
+.whyPoint span {
+  display: block;
+  color: var(--yw-brand);
+  font-size: clamp(1.7rem, 2.5vw, 2.2rem);
+  line-height: 1;
+  font-family: var(--font-body), sans-serif;
+  font-weight: 700;
+}
+
+.whyPoint h3 {
+  margin-top: 0.5rem;
+  color: var(--yw-brand);
+  font-size: clamp(1rem, 1.6vw, 1.55rem);
+  font-family: var(--font-body), sans-serif;
+  font-weight: 600;
+  line-height: 1.25;
+  max-width: 14ch;
+  margin-inline: auto;
+}
+
+.whyPoint1 {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.whyPoint2 {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.whyPoint3 {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.whyPoint4 {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.whyImageWrap {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  width: min(100%, 320px);
+  justify-self: center;
+}
+
+.whyImageWrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.featured {
+  margin-top: 2.9rem;
+}
+
+.featuredHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.featuredHead h2 {
+  color: var(--yw-brand-dark);
+  font-size: 2rem;
+}
+
+.featuredHead a {
+  color: var(--yw-brand);
+  font-weight: 700;
+  font-size: 0.93rem;
+}
+
+.productGrid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.productCard {
+  border: 1px solid var(--yw-line);
+  border-radius: 0.9rem;
+  background: #fff;
+  overflow: hidden;
+}
+
+.productImage {
+  aspect-ratio: 0.95;
+  background: #f3f6f2;
+}
+
+.productImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.productImage span {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--yw-subtle);
+  font-size: 0.85rem;
+}
+
+.productCard h3 {
+  padding: 0.85rem 0.75rem 0.25rem;
+  color: var(--yw-ink);
+  font-size: 0.98rem;
+  font-family: var(--font-body), sans-serif;
+}
+
+.productCard p {
+  padding: 0 0.75rem 0.9rem;
+  color: var(--yw-brand-dark);
+  font-size: 0.93rem;
+  font-weight: 700;
+}
+
+.testimonials {
+  margin-top: 2.9rem;
+}
+
+.testimonials h2 {
+  color: var(--yw-brand-dark);
+  font-size: clamp(1.8rem, 2.4vw, 2.5rem);
+  text-align: center;
+}
+
+.testimonials > p {
+  margin-top: 0.45rem;
+  text-align: center;
+  color: var(--yw-subtle);
+}
+
+.testimonialRail {
+  margin-top: 5rem;
+}
+
+.testimonialGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.reviewCard {
+  position: relative;
+  border: 1px solid var(--yw-line);
+  border-radius: 0.9rem;
+  background: #fff;
+  padding: 2.45rem 0.72rem 0.72rem;
+}
+
+.reviewHeader {
+  position: absolute;
+  top: -0.72rem;
+  left: -0.05rem;
+  right: 0.35rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.reviewHeader h3 {
+  position: relative;
+  max-width: calc(100% - 3.5rem);
+  min-height: 2.45rem;
+  border-radius: 999px 999px 999px 0;
+  padding: 0.56rem 0.95rem;
+  background: var(--yw-brand);
+  color: #fff;
+  font-size: 1.02rem;
+  font-family: var(--font-body), sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.reviewAvatar {
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+  border: 2px solid #a6c9b1;
+  background: linear-gradient(135deg, #5a3a2d 0%, #ba8d66 45%, #2c2524 100%);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.reviewCard p {
+  color: var(--yw-brand);
+  font-size: 0.99rem;
+  line-height: 1.45;
+  text-align: left;
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .about {
+    grid-template-columns: 1fr;
+  }
+
+  .aboutContent {
+    min-height: auto;
+  }
+
+  .whyLayout {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto auto auto;
+    column-gap: 0.9rem;
+    row-gap: 0.95rem;
+  }
+
+  .whyImageWrap {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    width: min(100%, 250px);
+  }
+
+  .whyPoint1 {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .whyPoint2 {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .whyPoint3 {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .whyPoint4 {
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+  .productGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .testimonialGrid {
+    grid-template-columns: 1fr;
+    gap: 0.92rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .page {
+    width: min(1200px, 100% - 1rem);
+    margin-top: 0.75rem;
+  }
+
+  .hero {
+    padding: 1.2rem;
+  }
+
+  .heroActions {
+    flex-direction: column;
+  }
+
+  .primaryBtn,
+  .secondaryBtn {
+    width: 100%;
+  }
+
+  .whyPoint span {
+    font-size: 1.55rem;
+  }
+
+  .whyPoint h3 {
+    font-size: 1.04rem;
+  }
+
+  .productGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .reviewCard {
+    padding-top: 2.3rem;
+  }
+
+  .reviewHeader h3 {
+    font-size: 0.96rem;
+  }
+
+  .reviewCard p {
+    font-size: 0.95rem;
+  }
+}

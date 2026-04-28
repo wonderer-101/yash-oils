@@ -1,0 +1,93 @@
+.page {
+  width: min(1200px, 100% - 2rem);
+  margin: 1.3rem auto 0;
+}
+
+.head h1 {
+  color: var(--yw-brand-dark);
+  font-size: clamp(2rem, 3vw, 2.8rem);
+}
+
+.head p {
+  margin-top: 0.45rem;
+  color: var(--yw-subtle);
+}
+
+.stateText {
+  margin-top: 1.2rem;
+  color: var(--yw-subtle);
+}
+
+.grid {
+  margin-top: 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.card {
+  border: 1px solid var(--yw-line);
+  border-radius: 0.9rem;
+  background: #fff;
+  overflow: hidden;
+}
+
+.cardMedia {
+  aspect-ratio: 0.95;
+  background: #f4f7f3;
+}
+
+.cardMedia img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cardMedia span {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--yw-subtle);
+}
+
+.cardBody {
+  padding: 0.8rem;
+}
+
+.cardBody h2 {
+  color: var(--yw-ink);
+  font-family: var(--font-body), sans-serif;
+  font-size: 1rem;
+}
+
+.cardBody p {
+  margin-top: 0.35rem;
+  color: var(--yw-brand-dark);
+  font-weight: 700;
+  font-size: 0.93rem;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .page {
+    width: min(1200px, 100% - 1rem);
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
