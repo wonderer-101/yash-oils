@@ -91,9 +91,9 @@
 }
 
 .clearBtn:hover {
-  color: #8f0000;
-  border-color: #d2b4a1;
-  background: #fff6ef;
+  color: var(--yw-brand-dark);
+  border-color: #bdd8c5;
+  background: #eef8f1;
 }
 
 .layout {
@@ -202,7 +202,7 @@
 
 .qtyControl:hover {
   background: #fdf9f3;
-  border-color: #ccb9a8;
+  border-color: #b9d7c3;
 }
 
 .qtyControl button {
@@ -220,7 +220,7 @@
 }
 
 .qtyControl button:hover {
-  background: #f1e6da;
+  background: #e9f4ed;
 }
 
 .qtyControl button svg {
@@ -243,9 +243,9 @@
 }
 
 .removeBtn {
-  border: 1px solid #efd6d6;
-  background: #fff8f8;
-  color: #8d1f1f;
+  border: 1px solid #d8e9dd;
+  background: #f7fcf8;
+  color: var(--yw-brand-dark);
   border-radius: 999px;
   height: 34px;
   padding: 0 0.66rem;
@@ -260,8 +260,8 @@
 }
 
 .removeBtn:hover {
-  background: #fff0f0;
-  border-color: #e9bcbc;
+  background: #eef8f1;
+  border-color: #bdd8c5;
 }
 
 .removeText {
@@ -345,14 +345,14 @@
 
 .primaryBtn {
   border: 0;
-  background: #8e0000;
+  background: var(--yw-brand);
   color: #fff;
   cursor: pointer;
   transition: background-color 160ms ease;
 }
 
 .primaryBtn:hover {
-  background: #700000;
+  background: var(--yw-brand-dark);
 }
 
 .primaryBtn:disabled {
@@ -361,14 +361,14 @@
 }
 
 .secondaryBtn {
-  border: 1px solid #8e0000;
-  color: #8e0000;
+  border: 1px solid var(--yw-brand);
+  color: var(--yw-brand);
   background: #fff;
   transition: background-color 160ms ease;
 }
 
 .secondaryBtn:hover {
-  background: #fff7f0;
+  background: #eef8f1;
 }
 
 .disabledBtn {
@@ -414,8 +414,8 @@
   border-radius: 999px;
   display: grid;
   place-items: center;
-  background: #f4e6d7;
-  color: #8e0000;
+  background: #e7f6ed;
+  color: var(--yw-brand);
 }
 
 .emptyCard h2 {

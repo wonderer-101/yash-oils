@@ -1,6 +1,6 @@
 .page {
   min-height: 80vh;
-  background: linear-gradient(160deg, #f9f5f0 0%, #f2ebe0 100%);
+  background: linear-gradient(160deg, #f8fbf7 0%, #f4f7f2 100%);
   padding: 1.8rem 0 3rem;
 }
 
@@ -13,14 +13,14 @@
 
 /* Hero card */
 .heroCard {
-  background: linear-gradient(135deg, #800000 0%, #5a0000 100%);
+  background: linear-gradient(135deg, var(--yw-brand) 0%, var(--yw-brand-dark) 100%);
   border-radius: 22px;
   padding: 1.6rem 1.8rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  box-shadow: 0 20px 48px rgba(90, 0, 0, 0.28);
+  box-shadow: 0 20px 48px rgba(32, 139, 70, 0.24);
 }
 
 .heroLeft {
@@ -35,7 +35,7 @@
   border-radius: 999px;
   background: rgba(255, 235, 190, 0.22);
   border: 2px solid rgba(255, 220, 160, 0.35);
-  color: #ffefc4;
+  color: #e8f6ed;
   font-family: var(--font-cormorant), Georgia, serif;
   font-size: 1.6rem;
   font-weight: 700;
@@ -50,7 +50,7 @@
 }
 
 .heroName {
-  color: #fff8ec;
+  color: #f5fff8;
   font-family: var(--font-cormorant), Georgia, serif;
   font-size: clamp(1.6rem, 2.8vw, 2.2rem);
   font-weight: 700;
@@ -106,7 +106,7 @@
 
 .statCard {
   background: linear-gradient(180deg, #fffefc 0%, #fff9f3 100%);
-  border: 1px solid #ecd8c7;
+  border: 1px solid #d8e5dc;
   border-radius: 16px;
   padding: 0.95rem 0.9rem;
   display: flex;
@@ -120,7 +120,7 @@
 .statCard:hover {
   transform: translateY(-2px);
   box-shadow: 0 11px 30px rgba(64, 24, 8, 0.12);
-  border-color: #e3c8b0;
+  border-color: #c3ddcb;
 }
 
 .statIconWrap {
@@ -135,7 +135,7 @@
 }
 
 .statIcon {
-  color: #800000;
+  color: var(--yw-brand);
 }
 
 .statCopy {
@@ -195,12 +195,12 @@
 }
 
 .tab[data-active="true"] {
-  color: #800000;
-  border-bottom-color: #800000;
+  color: var(--yw-brand);
+  border-bottom-color: var(--yw-brand);
 }
 
 .tab:hover:not([data-active="true"]) {
-  color: #4a3028;
+  color: #355143;
 }
 
 /* Tab content */
@@ -216,7 +216,7 @@
 
 .orderCard {
   background: #fff;
-  border: 1px solid #ecddd0;
+  border: 1px solid #dce9df;
   border-radius: 18px;
   padding: 1.1rem 1.2rem;
   box-shadow: 0 4px 16px rgba(64, 24, 8, 0.06);
@@ -275,7 +275,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.2rem;
-  background: #800000;
+  background: var(--yw-brand);
   color: #fff;
   border-radius: 999px;
   padding: 0.32rem 0.72rem;
@@ -287,7 +287,7 @@
 }
 
 .orderTrackBtn:hover {
-  background: #640000;
+  background: var(--yw-brand-dark);
 }
 
 .orderBadges {
@@ -336,7 +336,7 @@
   height: 46px;
   border-radius: 10px;
   object-fit: cover;
-  border: 1px solid #edddd0;
+  border: 1px solid #dce9df;
   flex: 0 0 auto;
 }
 
@@ -344,8 +344,8 @@
   width: 46px;
   height: 46px;
   border-radius: 10px;
-  border: 1px solid #edddd0;
-  background: #f4ede3;
+  border: 1px solid #dce9df;
+  background: #edf5f0;
   display: grid;
   place-items: center;
   color: #9a8a7e;
@@ -421,7 +421,7 @@
 
 .shopBtn {
   margin-top: 0.5rem;
-  background: #800000;
+  background: var(--yw-brand);
   color: #fff;
   border-radius: 999px;
   padding: 0.65rem 1.6rem;
@@ -433,13 +433,13 @@
 }
 
 .shopBtn:hover {
-  background: #640000;
+  background: var(--yw-brand-dark);
 }
 
 /* Account details */
 .detailsCard {
   background: #fff;
-  border: 1px solid #ecddd0;
+  border: 1px solid #dce9df;
   border-radius: 18px;
   padding: 1.4rem 1.5rem;
   box-shadow: 0 4px 16px rgba(64, 24, 8, 0.06);
@@ -491,7 +491,7 @@
 }
 
 .detailsNote a {
-  color: #800000;
+  color: var(--yw-brand);
   font-weight: 700;
 }
 
@@ -507,8 +507,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #800000;
-  color: #800000;
+  border: 1px solid var(--yw-brand);
+  color: var(--yw-brand);
   border-radius: 999px;
   padding: 0.45rem 0.95rem;
   font-family: var(--font-manrope), "Segoe UI", sans-serif;
@@ -519,7 +519,7 @@
 }
 
 .detailsActionBtn:hover {
-  background: #800000;
+  background: var(--yw-brand);
   color: #fff;
 }
 
@@ -534,7 +534,7 @@
 .profileEditForm,
 .addressForm {
   margin-top: 1rem;
-  border: 1px solid #efe3d8;
+  border: 1px solid #e4f1e8;
   border-radius: 14px;
   padding: 0.9rem;
   background: #fffaf6;
@@ -575,12 +575,12 @@
 
 .formField input:focus {
   outline: none;
-  border-color: #800000;
-  box-shadow: 0 0 0 2px rgba(128, 0, 0, 0.12);
+  border-color: var(--yw-brand);
+  box-shadow: 0 0 0 2px rgba(32, 139, 70, 0.12);
 }
 
 .formField input[readonly] {
-  background: #f5eee5;
+  background: #eff6f1;
   color: #6c5b50;
   border-style: dashed;
   cursor: not-allowed;
@@ -609,8 +609,8 @@
 }
 
 .primaryActionBtn {
-  border: 1px solid #800000;
-  background: #800000;
+  border: 1px solid var(--yw-brand);
+  background: var(--yw-brand);
   color: #fff;
 }
 
@@ -620,14 +620,14 @@
 }
 
 .secondaryActionBtn {
-  border: 1px solid #cdb7a6;
+  border: 1px solid #bdd8c5;
   background: #fff;
-  color: #6d584d;
+  color: #4f6a57;
 }
 
 .secondaryActionBtn:hover {
-  border-color: #800000;
-  color: #800000;
+  border-color: var(--yw-brand);
+  color: var(--yw-brand);
 }
 
 .formError {
@@ -670,7 +670,7 @@
 }
 
 .addressCard {
-  border: 1px solid #eddfd4;
+  border: 1px solid #dce9df;
   border-radius: 12px;
   padding: 0.72rem 0.8rem;
   background: #fff;
@@ -695,9 +695,9 @@
 
 .defaultBadge {
   border-radius: 999px;
-  background: #f8eadb;
+  background: #e7f6ed;
   color: #7a3c06;
-  border: 1px solid #e6c9a7;
+  border: 1px solid #c8decf;
   padding: 0.08rem 0.45rem;
   font-size: 0.62rem;
   font-weight: 800;
@@ -712,9 +712,9 @@
 }
 
 .addressActions button {
-  border: 1px solid #ddcabc;
+  border: 1px solid #c9dfd1;
   background: #fff;
-  color: #6d584d;
+  color: #4f6a57;
   border-radius: 999px;
   padding: 0.25rem 0.62rem;
   font-family: var(--font-manrope), "Segoe UI", sans-serif;
@@ -727,8 +727,8 @@
 }
 
 .addressActions button:hover {
-  border-color: #800000;
-  color: #800000;
+  border-color: var(--yw-brand);
+  color: var(--yw-brand);
 }
 
 .addressActionLabel {
@@ -781,8 +781,8 @@
 .spinner {
   width: 32px;
   height: 32px;
-  border: 3px solid #ecddd0;
-  border-top-color: #800000;
+  border: 3px solid #dce9df;
+  border-top-color: var(--yw-brand);
   border-radius: 999px;
   animation: spin 0.7s linear infinite;
 }
@@ -808,7 +808,7 @@
     border-radius: 16px;
     gap: 0.9rem;
     padding: 1rem;
-    box-shadow: 0 12px 32px rgba(90, 0, 0, 0.22);
+    box-shadow: 0 12px 32px rgba(32, 139, 70, 0.2);
   }
 
   .heroLeft {
@@ -860,10 +860,10 @@
 
   .tab {
     flex: 0 0 auto;
-    border: 1px solid #dcc8b8;
+    border: 1px solid #c6ddce;
     border-radius: 999px;
     background: #fff;
-    color: #6f5b4e;
+    color: #55735f;
     margin-bottom: 0;
     min-height: 36px;
     padding: 0.42rem 0.8rem;
@@ -872,8 +872,8 @@
   }
 
   .tab[data-active="true"] {
-    background: #800000;
-    border-color: #800000;
+    background: var(--yw-brand);
+    border-color: var(--yw-brand);
     color: #fff;
   }
 
