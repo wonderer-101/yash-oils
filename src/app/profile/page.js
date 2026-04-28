@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
 import { useEffect, useState } from "react";
@@ -18,10 +17,8 @@ import {
   updateCustomerAddress,
   updateCustomerProfile,
 } from "@/lib/client/shopifyClient";
-import { replaceTo } from "@/lib/client/navigation";
+import { redirectTo, replaceTo } from "@/lib/client/navigation";
 import styles from "./profile.module.css";
-
-const customerAccountUrl = "/api/auth/shopify/account";
 
 function formatMoney(amount, currencyCode = "INR") {
   return new Intl.NumberFormat("en-IN", {
@@ -68,6 +65,8 @@ export default function ProfilePage() {
   const [addressSaving, setAddressSaving] = useState(false);
   const [addressMode, setAddressMode] = useState("create");
   const [editingAddressId, setEditingAddressId] = useState("");
+  const [showAddressForm, setShowAddressForm] = useState(false);
+  const [loggingOut, setLoggingOut] = useState(false);
   const [addressForm, setAddressForm] = useState({
     firstName: "",
     lastName: "",
@@ -109,6 +108,7 @@ export default function ProfilePage() {
     });
     setAddressMode("create");
     setEditingAddressId("");
+    setShowAddressForm(false);
     setAddressForm({
       firstName: customer.firstName || "",
       lastName: customer.lastName || "",
@@ -139,6 +139,9 @@ export default function ProfilePage() {
     try {
       const data = await fetchCustomerAddresses();
       setAddresses(data);
+      if (data.length === 0) {
+        setShowAddressForm(true);
+      }
     } catch {
       setAddresses([]);
       setAddressesError("Unable to fetch addresses.");
@@ -163,7 +166,7 @@ export default function ProfilePage() {
     }
   }
 
-  function resetAddressForm() {
+  function resetAddressForm(keepOpen = false) {
     setAddressMode("create");
     setEditingAddressId("");
     setAddressForm({
@@ -179,11 +182,13 @@ export default function ProfilePage() {
       phoneNumber: profileForm.phoneNumber || "",
       defaultAddress: addresses.length === 0,
     });
+    setShowAddressForm(keepOpen || addresses.length === 0);
   }
 
   function handleEditAddress(address) {
     setAddressMode("edit");
     setEditingAddressId(address.id);
+    setShowAddressForm(true);
     setAddressForm({
       firstName: address.firstName || "",
       lastName: address.lastName || "",
@@ -230,7 +235,7 @@ export default function ProfilePage() {
         await createCustomerAddress(payload);
       }
       await loadAddresses();
-      resetAddressForm();
+      resetAddressForm(false);
     } catch {
       setAddressesError("Failed to save address.");
     } finally {
@@ -254,6 +259,13 @@ export default function ProfilePage() {
     } finally {
       setAddressSaving(false);
     }
+  }
+
+  function handleSignOut(event) {
+    event.preventDefault();
+    if (loggingOut) return;
+    setLoggingOut(true);
+    redirectTo("/api/auth/shopify/logout?hosted=1&return_to=/");
   }
 
   // Still loading or redirect pending
@@ -301,10 +313,10 @@ export default function ProfilePage() {
                 </p>
               </div>
             </div>
-            <a href="/api/auth/shopify/logout" className={styles.logoutBtn}>
+            <button type="button" className={styles.logoutBtn} onClick={handleSignOut} disabled={loggingOut}>
               <LogOut size={14} />
-              Sign out
-            </a>
+              {loggingOut ? "Signing out..." : "Sign out"}
+            </button>
           </div>
 
           {/* Stats row */}
@@ -462,28 +474,12 @@ export default function ProfilePage() {
           {activeTab === "details" && (
             <div className={styles.tabContent}>
               <div className={styles.detailsCard}>
-                <h2 className={styles.detailsTitle}>Personal Information</h2>
-                <div className={styles.detailsGrid}>
-                  <div className={styles.detailField}>
-                    <label>First Name</label>
-                    <span>{firstName || "--"}</span>
-                  </div>
-                  <div className={styles.detailField}>
-                    <label>Last Name</label>
-                    <span>{lastName || "--"}</span>
-                  </div>
-                  <div className={styles.detailField} style={{ gridColumn: "1 / -1" }}>
-                    <label>Email Address</label>
-                    <span>{email || "--"}</span>
-                  </div>
-                  <div className={styles.detailField} style={{ gridColumn: "1 / -1" }}>
-                    <label>Phone Number</label>
-                    <span>{phone || "-- Not added yet --"}</span>
-                  </div>
-                </div>
-
+                <h2 className={styles.detailsTitle}>My Profile</h2>
+                <p className={styles.inlineHint}>
+                  Keep your details updated for smoother order updates and delivery communication.
+                </p>
                 <form className={styles.profileEditForm} onSubmit={handleProfileSave}>
-                  <h3 className={styles.sectionHeading}>Edit Profile</h3>
+                  <h3 className={styles.sectionHeading}>Edit Details</h3>
                   <div className={styles.formGrid}>
                     <label className={styles.formField}>
                       <span>First Name</span>
@@ -504,6 +500,10 @@ export default function ProfilePage() {
                       />
                     </label>
                     <label className={styles.formField} style={{ gridColumn: "1 / -1" }}>
+                      <span>Email Address</span>
+                      <input type="email" value={email} readOnly />
+                    </label>
+                    <label className={styles.formField} style={{ gridColumn: "1 / -1" }}>
                       <span>Phone Number</span>
                       <input
                         type="tel"
@@ -522,13 +522,6 @@ export default function ProfilePage() {
                     {!profileError && profileMessage && <span className={styles.formSuccess}>{profileMessage}</span>}
                   </div>
                 </form>
-
-                <p className={styles.detailsNote}>
-                  You can still manage everything directly in your
-                  <a href={customerAccountUrl} target="_blank" rel="noreferrer">
-                    {" "}Shopify account page
-                  </a>.
-                </p>
               </div>
             </div>
           )}
@@ -540,11 +533,17 @@ export default function ProfilePage() {
                 <h2 className={styles.detailsTitle}>Manage Addresses</h2>
                 <div className={styles.addressSection}>
                   <div className={styles.addressSectionHeader}>
-                    <h3 className={styles.sectionHeading}>Your Addresses</h3>
-                    <button type="button" className={styles.secondaryActionBtn} onClick={resetAddressForm}>
-                      <Plus size={14} />
-                      Add New
-                    </button>
+                    <h3 className={styles.sectionHeading}>Saved Addresses</h3>
+                    {!showAddressForm && (
+                      <button
+                        type="button"
+                        className={styles.secondaryActionBtn}
+                        onClick={() => resetAddressForm(true)}
+                      >
+                        <Plus size={14} />
+                        Add New
+                      </button>
+                    )}
                   </div>
 
                   {addressesLoading ? (
@@ -561,16 +560,16 @@ export default function ProfilePage() {
                               <strong>{[address.firstName, address.lastName].filter(Boolean).join(" ") || "Address"}</strong>
                               {address.isDefault && <span className={styles.defaultBadge}>Default</span>}
                             </div>
-                            <div className={styles.addressActions}>
-                              <button type="button" onClick={() => handleEditAddress(address)}>
-                                <Pencil size={13} />
-                                Edit
-                              </button>
-                              <button type="button" onClick={() => handleDeleteAddress(address.id)}>
-                                <Trash2 size={13} />
-                                Delete
-                              </button>
-                            </div>
+                             <div className={styles.addressActions}>
+                               <button type="button" onClick={() => handleEditAddress(address)}>
+                                 <Pencil size={13} />
+                                 <span className={styles.addressActionLabel}>Edit</span>
+                               </button>
+                               <button type="button" onClick={() => handleDeleteAddress(address.id)}>
+                                 <Trash2 size={13} />
+                                 <span className={styles.addressActionLabel}>Delete</span>
+                               </button>
+                             </div>
                           </div>
                           <p className={styles.addressText}>
                             {[
@@ -592,143 +591,140 @@ export default function ProfilePage() {
                     </div>
                   )}
 
-                  <form className={styles.addressForm} onSubmit={handleAddressSubmit}>
-                    <div className={styles.formGrid}>
-                      <label className={styles.formField}>
-                        <span>First Name</span>
-                        <input
-                          type="text"
-                          value={addressForm.firstName}
-                          onChange={(e) => setAddressForm((prev) => ({ ...prev, firstName: e.target.value }))}
-                          placeholder="First name"
-                        />
-                      </label>
-                      <label className={styles.formField}>
-                        <span>Last Name</span>
-                        <input
-                          type="text"
-                          value={addressForm.lastName}
-                          onChange={(e) => setAddressForm((prev) => ({ ...prev, lastName: e.target.value }))}
-                          placeholder="Last name"
-                        />
-                      </label>
-                      <label className={styles.formField} style={{ gridColumn: "1 / -1" }}>
-                        <span>Address Line 1</span>
-                        <input
-                          type="text"
-                          value={addressForm.address1}
-                          onChange={(e) => setAddressForm((prev) => ({ ...prev, address1: e.target.value }))}
-                          placeholder="Flat, house no., street"
-                          required
-                        />
-                      </label>
-                      <label className={styles.formField} style={{ gridColumn: "1 / -1" }}>
-                        <span>Address Line 2</span>
-                        <input
-                          type="text"
-                          value={addressForm.address2}
-                          onChange={(e) => setAddressForm((prev) => ({ ...prev, address2: e.target.value }))}
-                          placeholder="Area, landmark (optional)"
-                        />
-                      </label>
-                      <label className={styles.formField}>
-                        <span>City</span>
-                        <input
-                          type="text"
-                          value={addressForm.city}
-                          onChange={(e) => setAddressForm((prev) => ({ ...prev, city: e.target.value }))}
-                          placeholder="City"
-                          required
-                        />
-                      </label>
-                      <label className={styles.formField}>
-                        <span>State / Province</span>
-                        <input
-                          type="text"
-                          value={addressForm.zoneCode}
-                          onChange={(e) => setAddressForm((prev) => ({ ...prev, zoneCode: e.target.value }))}
-                          placeholder="State"
-                        />
-                      </label>
-                      <label className={styles.formField}>
-                        <span>PIN Code</span>
-                        <input
-                          type="text"
-                          value={addressForm.zip}
-                          onChange={(e) => setAddressForm((prev) => ({ ...prev, zip: e.target.value }))}
-                          placeholder="ZIP / PIN"
-                          required
-                        />
-                      </label>
-                      <label className={styles.formField}>
-                        <span>Country Code</span>
-                        <input
-                          type="text"
-                          value={addressForm.territoryCode}
-                          onChange={(e) =>
-                            setAddressForm((prev) => ({
-                              ...prev,
-                              territoryCode: e.target.value.toUpperCase().slice(0, 2),
-                            }))
-                          }
-                          placeholder="IN"
-                          required
-                        />
-                      </label>
-                      <label className={styles.formField}>
-                        <span>Phone Number</span>
-                        <input
-                          type="tel"
-                          value={addressForm.phoneNumber}
-                          onChange={(e) => setAddressForm((prev) => ({ ...prev, phoneNumber: e.target.value }))}
-                          placeholder="Phone number"
-                        />
-                      </label>
-                      <label className={styles.formField}>
-                        <span>Company (optional)</span>
-                        <input
-                          type="text"
-                          value={addressForm.company}
-                          onChange={(e) => setAddressForm((prev) => ({ ...prev, company: e.target.value }))}
-                          placeholder="Company"
-                        />
-                      </label>
-                    </div>
+                  {showAddressForm && (
+                    <form className={styles.addressForm} onSubmit={handleAddressSubmit}>
+                      <h3 className={styles.sectionHeading}>
+                        {addressMode === "edit" ? "Edit Address" : "Add New Address"}
+                      </h3>
+                      <div className={styles.formGrid}>
+                        <label className={styles.formField}>
+                          <span>First Name</span>
+                          <input
+                            type="text"
+                            value={addressForm.firstName}
+                            onChange={(e) => setAddressForm((prev) => ({ ...prev, firstName: e.target.value }))}
+                            placeholder="First name"
+                          />
+                        </label>
+                        <label className={styles.formField}>
+                          <span>Last Name</span>
+                          <input
+                            type="text"
+                            value={addressForm.lastName}
+                            onChange={(e) => setAddressForm((prev) => ({ ...prev, lastName: e.target.value }))}
+                            placeholder="Last name"
+                          />
+                        </label>
+                        <label className={styles.formField} style={{ gridColumn: "1 / -1" }}>
+                          <span>Address Line 1</span>
+                          <input
+                            type="text"
+                            value={addressForm.address1}
+                            onChange={(e) => setAddressForm((prev) => ({ ...prev, address1: e.target.value }))}
+                            placeholder="Flat, house no., street"
+                            required
+                          />
+                        </label>
+                        <label className={styles.formField} style={{ gridColumn: "1 / -1" }}>
+                          <span>Address Line 2</span>
+                          <input
+                            type="text"
+                            value={addressForm.address2}
+                            onChange={(e) => setAddressForm((prev) => ({ ...prev, address2: e.target.value }))}
+                            placeholder="Area, landmark (optional)"
+                          />
+                        </label>
+                        <label className={styles.formField}>
+                          <span>City</span>
+                          <input
+                            type="text"
+                            value={addressForm.city}
+                            onChange={(e) => setAddressForm((prev) => ({ ...prev, city: e.target.value }))}
+                            placeholder="City"
+                            required
+                          />
+                        </label>
+                        <label className={styles.formField}>
+                          <span>State / Province</span>
+                          <input
+                            type="text"
+                            value={addressForm.zoneCode}
+                            onChange={(e) => setAddressForm((prev) => ({ ...prev, zoneCode: e.target.value }))}
+                            placeholder="State"
+                          />
+                        </label>
+                        <label className={styles.formField}>
+                          <span>PIN Code</span>
+                          <input
+                            type="text"
+                            value={addressForm.zip}
+                            onChange={(e) => setAddressForm((prev) => ({ ...prev, zip: e.target.value }))}
+                            placeholder="ZIP / PIN"
+                            required
+                          />
+                        </label>
+                        <label className={styles.formField}>
+                          <span>Country Code</span>
+                          <input
+                            type="text"
+                            value={addressForm.territoryCode}
+                            onChange={(e) =>
+                              setAddressForm((prev) => ({
+                                ...prev,
+                                territoryCode: e.target.value.toUpperCase().slice(0, 2),
+                              }))
+                            }
+                            placeholder="IN"
+                            required
+                          />
+                        </label>
+                        <label className={styles.formField}>
+                          <span>Phone Number</span>
+                          <input
+                            type="tel"
+                            value={addressForm.phoneNumber}
+                            onChange={(e) => setAddressForm((prev) => ({ ...prev, phoneNumber: e.target.value }))}
+                            placeholder="Phone number"
+                          />
+                        </label>
+                        <label className={styles.formField}>
+                          <span>Company (optional)</span>
+                          <input
+                            type="text"
+                            value={addressForm.company}
+                            onChange={(e) => setAddressForm((prev) => ({ ...prev, company: e.target.value }))}
+                            placeholder="Company"
+                          />
+                        </label>
+                      </div>
 
-                    <label className={styles.checkboxRow}>
-                      <input
-                        type="checkbox"
-                        checked={addressForm.defaultAddress}
-                        onChange={(e) => setAddressForm((prev) => ({ ...prev, defaultAddress: e.target.checked }))}
-                      />
-                      <span>Set as default address</span>
-                    </label>
+                      <label className={styles.checkboxRow}>
+                        <input
+                          type="checkbox"
+                          checked={addressForm.defaultAddress}
+                          onChange={(e) => setAddressForm((prev) => ({ ...prev, defaultAddress: e.target.checked }))}
+                        />
+                        <span>Set as default address</span>
+                      </label>
 
-                    <div className={styles.formActions}>
-                      <button type="submit" className={styles.primaryActionBtn} disabled={addressSaving}>
-                        <Save size={14} />
-                        {addressSaving
-                          ? "Saving..."
-                          : addressMode === "edit"
-                            ? "Update Address"
-                            : "Save Address"}
-                      </button>
-                      {addressMode === "edit" && (
-                        <button type="button" className={styles.secondaryActionBtn} onClick={resetAddressForm}>
-                          Cancel Edit
+                      <div className={styles.formActions}>
+                        <button type="submit" className={styles.primaryActionBtn} disabled={addressSaving}>
+                          <Save size={14} />
+                          {addressSaving
+                            ? "Saving..."
+                            : addressMode === "edit"
+                              ? "Update Address"
+                              : "Save Address"}
                         </button>
-                      )}
-                    </div>
-                    {addressesError && <p className={styles.formError}>{addressesError}</p>}
-                  </form>
+                        <button type="button" className={styles.secondaryActionBtn} onClick={() => resetAddressForm(false)}>
+                          Cancel
+                        </button>
+                      </div>
+                      {addressesError && <p className={styles.formError}>{addressesError}</p>}
+                    </form>
+                  )}
                 </div>
 
-                <p className={styles.detailsNote}>
-                  You can also manage addresses in your
-                  <a href={customerAccountUrl} target="_blank" rel="noreferrer">
-                    {" "}Shopify account page
-                  </a>.
-                </p>
               </div>
             </div>
           )}

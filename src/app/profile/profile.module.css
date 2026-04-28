@@ -45,6 +45,7 @@
 }
 
 .heroInfo {
+  flex: 1 1 auto;
   min-width: 0;
 }
 
@@ -65,6 +66,7 @@
   display: flex;
   align-items: center;
   gap: 0.35rem;
+  overflow-wrap: anywhere;
 }
 
 .logoutBtn {
@@ -88,6 +90,11 @@
 .logoutBtn:hover {
   background: rgba(255, 240, 210, 0.2);
   border-color: rgba(255, 220, 180, 0.5);
+}
+
+.logoutBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
 /* Stats row */
@@ -572,6 +579,13 @@
   box-shadow: 0 0 0 2px rgba(128, 0, 0, 0.12);
 }
 
+.formField input[readonly] {
+  background: #f5eee5;
+  color: #6c5b50;
+  border-style: dashed;
+  cursor: not-allowed;
+}
+
 .formActions {
   margin-top: 0.8rem;
   display: flex;
@@ -717,6 +731,10 @@
   color: #800000;
 }
 
+.addressActionLabel {
+  display: inline;
+}
+
 .addressText {
   margin: 0.55rem 0 0;
   color: #3a2b24;
@@ -785,6 +803,8 @@
   }
 
   .heroCard {
+    flex-direction: column;
+    align-items: stretch;
     border-radius: 16px;
     gap: 0.9rem;
     padding: 1rem;
@@ -792,6 +812,7 @@
   }
 
   .heroLeft {
+    width: 100%;
     gap: 0.8rem;
   }
 
@@ -1028,6 +1049,10 @@
     min-height: 32px;
     font-size: 0.68rem;
     padding: 0.22rem 0.45rem;
+  }
+
+  .addressActionLabel {
+    display: none;
   }
 
   .addressText {

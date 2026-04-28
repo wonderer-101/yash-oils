@@ -83,7 +83,6 @@ export default function CartPage() {
               Clear cart
             </button>
           </div>
-          <p className={styles.helper}>Review items and continue with secure Shopify checkout.</p>
           <div className={styles.infoChips}>
             <span className={styles.infoChip}>
               <Truck size={14} aria-hidden="true" />
@@ -114,12 +113,10 @@ export default function CartPage() {
                   </Link>
 
                   <div className={styles.itemInfo}>
-                    <Link href={item.handle ? `/products/${item.handle}` : "#"} className={styles.itemTitle}>
-                      {item.title}
-                    </Link>
-                    <p className={styles.itemMeta}>Unit price: {formatMoney(unitPrice, currency)}</p>
-                    <div className={styles.priceBlock}>
-                      <span className={styles.lineTotalLabel}>Line total</span>
+                    <div className={styles.itemTop}>
+                      <Link href={item.handle ? `/products/${item.handle}` : "#"} className={styles.itemTitle}>
+                        {item.title}
+                      </Link>
                       <p className={styles.itemPrice}>{formatMoney(linePrice, currency)}</p>
                     </div>
 
@@ -147,7 +144,7 @@ export default function CartPage() {
                         onClick={() => removeItem(item.variantNumericId)}
                       >
                         <Trash2 size={14} />
-                        Remove
+                        <span className={styles.removeText}>Remove</span>
                       </button>
                     </div>
                   </div>

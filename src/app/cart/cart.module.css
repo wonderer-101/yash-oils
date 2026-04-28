@@ -1,14 +1,13 @@
 .page {
-  min-height: 100vh;
-  min-height: 100dvh;
+  min-height: 72vh;
   background:
-    radial-gradient(circle at 92% -14%, rgba(32, 139, 70, 0.1) 0%, transparent 37%),
-    linear-gradient(180deg, #f7faf6 0%, #f2f7f3 100%);
-  padding: 1.05rem 0 0.9rem;
+    radial-gradient(circle at 90% -10%, rgba(231, 178, 138, 0.24) 0%, transparent 35%),
+    linear-gradient(180deg, #f9f6f1 0%, #f3ece3 100%);
+  padding: 1.1rem 0 2.5rem;
 }
 
 .shell {
-  width: min(1200px, 100% - 2rem);
+  width: min(1160px, 94vw);
   margin: 0 auto;
 }
 
@@ -23,66 +22,68 @@
 
 .headingEyebrow {
   margin: 0;
-  color: #238e48;
-  font-family: var(--font-body), sans-serif;
-  font-size: 0.75rem;
+  color: #8d6c53;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
 .topRow {
-  margin-top: 0.2rem;
+  margin-top: 0.25rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
+  gap: 0.8rem;
 }
 
 .heading {
   margin: 0;
-  color: #174f31;
-  font-family: var(--font-heading), serif;
-  font-size: clamp(2rem, 3vw, 2.8rem);
-  line-height: 1;
+  color: #1d1510;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: clamp(1.7rem, 2.4vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
 }
 
 .helper {
-  margin: 0.38rem 0 0;
-  color: #466252;
-  font-family: var(--font-body), sans-serif;
-  font-size: 0.92rem;
+  margin: 0.35rem 0 0;
+  color: #66584d;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.9rem;
 }
 
 .infoChips {
-  margin-top: 0.68rem;
+  margin-top: 0.6rem;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0.52rem;
+  gap: 0.48rem;
 }
 
 .infoChip {
   display: inline-flex;
   align-items: center;
-  gap: 0.34rem;
-  border: 1px solid #c8e1ce;
-  background: #eef8f1;
+  gap: 0.35rem;
+  border: 1px solid #decfbe;
+  background: #fffdfb;
   border-radius: 999px;
-  padding: 0.33rem 0.68rem;
-  color: #1f6a3a;
-  font-family: var(--font-body), sans-serif;
-  font-size: 0.77rem;
+  padding: 0.32rem 0.62rem;
+  color: #4e4035;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.76rem;
   font-weight: 700;
 }
 
 .clearBtn {
-  border: 1px solid #b8d9c3;
+  border: 1px solid #d8c8b8;
   background: #fff;
-  color: #23683c;
+  color: #6e5d4f;
   border-radius: 999px;
-  padding: 0.44rem 0.86rem;
-  font-family: var(--font-body), sans-serif;
+  padding: 0.44rem 0.84rem;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
   font-size: 0.8rem;
   font-weight: 700;
   cursor: pointer;
@@ -91,44 +92,44 @@
 
 .clearBtn:hover {
   color: #8f0000;
-  border-color: #d9bcbc;
-  background: #fff5f5;
+  border-color: #d2b4a1;
+  background: #fff6ef;
 }
 
 .layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.34fr) minmax(280px, 0.66fr);
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.68fr);
   gap: 1rem;
   align-items: start;
 }
 
 .itemsWrap {
   display: grid;
-  gap: 0.76rem;
+  gap: 0.78rem;
 }
 
 .itemCard {
-  border: 1px solid #d4e6d9;
-  border-radius: 18px;
+  border: 1px solid #e6daca;
+  border-radius: 20px;
   background: #fff;
-  box-shadow: 0 8px 22px rgba(12, 64, 33, 0.06);
+  box-shadow: 0 10px 24px rgba(64, 24, 8, 0.06);
   padding: 0.78rem;
   display: grid;
-  grid-template-columns: 108px minmax(0, 1fr);
-  gap: 0.76rem;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 0.78rem;
 }
 
 .imageLink {
-  border-radius: 13px;
+  border-radius: 14px;
   overflow: hidden;
   display: block;
-  background: #eef4ef;
+  background: #f2ebdf;
 }
 
 .itemImage {
   display: block;
   width: 100%;
-  aspect-ratio: 0.84;
+  aspect-ratio: 0.82;
   object-fit: cover;
 }
 
@@ -136,109 +137,119 @@
   display: grid;
   place-items: center;
   width: 100%;
-  aspect-ratio: 0.84;
-  color: #607567;
-  font-family: var(--font-body), sans-serif;
+  aspect-ratio: 0.82;
+  color: #756a61;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
   font-size: 0.78rem;
 }
 
 .itemInfo {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.82rem;
+}
+
+.itemTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.6rem;
 }
 
 .itemTitle {
-  color: #174f31;
-  font-family: var(--font-heading), serif;
-  font-size: clamp(1.2rem, 2vw, 1.55rem);
-  line-height: 1.08;
+  color: #1f1712;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: clamp(0.98rem, 1.35vw, 1.1rem);
+  line-height: 1.32;
   font-weight: 700;
-}
-
-.itemMeta {
-  margin: 0.34rem 0 0;
-  color: #5e7968;
-  font-family: var(--font-body), sans-serif;
-  font-size: 0.79rem;
-  font-weight: 600;
-}
-
-.priceBlock {
-  margin-top: 0.4rem;
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.7rem;
-}
-
-.lineTotalLabel {
-  color: #6e8777;
-  font-family: var(--font-body), sans-serif;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
 }
 
 .itemPrice {
   margin: 0;
-  color: #0d4f2d;
-  font-family: var(--font-body), sans-serif;
-  font-size: 1.18rem;
+  color: #241912;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 1.08rem;
   line-height: 1.05;
   font-weight: 800;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.012em;
   font-variant-numeric: tabular-nums lining-nums;
   font-feature-settings: "tnum" 1, "lnum" 1;
   white-space: nowrap;
 }
 
 .itemActions {
-  margin-top: 0.6rem;
+  margin-top: 0;
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 0.6rem;
+  justify-content: space-between;
+  gap: 0.62rem;
 }
 
 .qtyControl {
-  display: inline-grid;
-  grid-template-columns: 33px 44px 33px;
-  border: 1px solid #c8dece;
-  border-radius: 10px;
-  overflow: hidden;
+  --quantity-selector-width: 118px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: var(--quantity-selector-width);
+  height: 34px;
+  border: 1px solid #d8cabc;
+  border-radius: 999px;
   background: #fff;
+  transition: background-color 150ms ease, border-color 150ms ease;
+}
+
+.qtyControl:hover {
+  background: #fdf9f3;
+  border-color: #ccb9a8;
 }
 
 .qtyControl button {
+  width: 32px;
+  height: 32px;
   border: 0;
-  background: #eef7f1;
-  color: #1e5a35;
-  display: grid;
-  place-items: center;
+  background: transparent;
+  color: #2f241b;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
   cursor: pointer;
   transition: background-color 150ms ease;
 }
 
 .qtyControl button:hover {
-  background: #e0efdf;
+  background: #f1e6da;
+}
+
+.qtyControl button svg {
+  transition: transform 120ms ease;
+}
+
+.qtyControl button:active svg {
+  transform: scale(0.9);
 }
 
 .qtyControl span {
-  display: grid;
-  place-items: center;
-  color: #1e5a35;
-  font-family: var(--font-body), sans-serif;
-  font-size: 0.83rem;
+  min-width: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #2f241b;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
+  font-size: 0.82rem;
   font-weight: 700;
 }
 
 .removeBtn {
-  border: 1px solid #f0d8d8;
+  border: 1px solid #efd6d6;
   background: #fff8f8;
-  color: #8b2222;
+  color: #8d1f1f;
   border-radius: 999px;
-  padding: 0.34rem 0.66rem;
-  font-family: var(--font-body), sans-serif;
+  height: 34px;
+  padding: 0 0.66rem;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
   font-size: 0.77rem;
   font-weight: 700;
   display: inline-flex;
@@ -250,42 +261,46 @@
 
 .removeBtn:hover {
   background: #fff0f0;
-  border-color: #e8c2c2;
+  border-color: #e9bcbc;
+}
+
+.removeText {
+  display: inline;
 }
 
 .summaryCard {
-  border: 1px solid #d4e6d9;
-  border-radius: 18px;
-  background: linear-gradient(180deg, #fff 0%, #f3faf5 100%);
-  box-shadow: 0 10px 24px rgba(12, 64, 33, 0.08);
-  padding: 0.95rem;
+  border: 1px solid #e6daca;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #fff 0%, #fff8f0 100%);
+  box-shadow: 0 12px 28px rgba(64, 24, 8, 0.08);
+  padding: 0.96rem;
   height: fit-content;
   position: sticky;
-  top: 100px;
+  top: 98px;
 }
 
 .summaryTitle {
   margin: 0;
-  color: #174f31;
-  font-family: var(--font-heading), serif;
-  font-size: 1.72rem;
+  color: #1f1611;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: 1.78rem;
   line-height: 1;
 }
 
 .summaryRow {
-  margin-top: 0.62rem;
+  margin-top: 0.6rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0.7rem;
-  color: #3f5f4d;
-  font-family: var(--font-body), sans-serif;
+  color: #4d3f34;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
   font-size: 0.86rem;
 }
 
 .summaryRow strong {
-  color: #124f2e;
-  font-family: var(--font-body), sans-serif;
+  color: #1e1611;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
   font-size: 1.12rem;
   line-height: 1.05;
   font-weight: 800;
@@ -296,9 +311,9 @@
 }
 
 .summaryRowTotal {
-  margin-top: 0.7rem;
+  margin-top: 0.68rem;
   padding-top: 0.62rem;
-  border-top: 1px solid #d8e8de;
+  border-top: 1px solid #eadbcb;
 }
 
 .summaryRowTotal strong {
@@ -307,8 +322,8 @@
 
 .summaryHint {
   margin-top: 0.62rem;
-  color: #5d7767;
-  font-family: var(--font-body), sans-serif;
+  color: #6d5f54;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
   font-size: 0.8rem;
   line-height: 1.45;
 }
@@ -316,28 +331,28 @@
 .primaryBtn,
 .secondaryBtn,
 .disabledBtn {
-  margin-top: 0.74rem;
+  margin-top: 0.72rem;
   width: 100%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  font-family: var(--font-body), sans-serif;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
   font-size: 0.88rem;
   font-weight: 700;
-  padding: 0.76rem 1rem;
-  text-decoration: none;
+  padding: 0.75rem 1rem;
 }
 
 .primaryBtn {
   border: 0;
-  background: var(--yw-brand);
+  background: #8e0000;
   color: #fff;
+  cursor: pointer;
   transition: background-color 160ms ease;
 }
 
 .primaryBtn:hover {
-  background: #186d36;
+  background: #700000;
 }
 
 .primaryBtn:disabled {
@@ -346,20 +361,20 @@
 }
 
 .secondaryBtn {
-  border: 1px solid var(--yw-brand);
-  color: var(--yw-brand);
+  border: 1px solid #8e0000;
+  color: #8e0000;
   background: #fff;
   transition: background-color 160ms ease;
 }
 
 .secondaryBtn:hover {
-  background: #eef8f1;
+  background: #fff7f0;
 }
 
 .disabledBtn {
-  border: 1px solid #cfded1;
-  color: #77907f;
-  background: #f7faf8;
+  border: 1px solid #dbcfc3;
+  color: #8f8378;
+  background: #f8f5f2;
 }
 
 .secureRow {
@@ -367,18 +382,18 @@
   display: inline-flex;
   align-items: center;
   gap: 0.38rem;
-  color: #1f6a3a;
-  font-family: var(--font-body), sans-serif;
+  color: #42633f;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
   font-size: 0.76rem;
   font-weight: 700;
 }
 
 .loadingCard,
 .emptyCard {
-  border: 1px solid #d4e6d9;
-  border-radius: 18px;
+  border: 1px solid #e6daca;
+  border-radius: 20px;
   background: #fff;
-  box-shadow: 0 8px 20px rgba(12, 64, 33, 0.06);
+  box-shadow: 0 8px 20px rgba(64, 24, 8, 0.06);
   padding: 1.2rem 1rem;
 }
 
@@ -390,7 +405,7 @@
   display: grid;
   justify-items: center;
   text-align: center;
-  gap: 0.5rem;
+  gap: 0.48rem;
 }
 
 .emptyIcon {
@@ -399,29 +414,29 @@
   border-radius: 999px;
   display: grid;
   place-items: center;
-  background: #e9f6ee;
-  color: var(--yw-brand);
+  background: #f4e6d7;
+  color: #8e0000;
 }
 
 .emptyCard h2 {
   margin: 0;
-  color: #174f31;
-  font-family: var(--font-heading), serif;
-  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  color: #211813;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
   line-height: 1;
 }
 
 .emptyCard p {
   margin: 0;
-  color: #587060;
-  font-family: var(--font-body), sans-serif;
+  color: #6d5f54;
+  font-family: var(--font-manrope), "Segoe UI", sans-serif;
   font-size: 0.9rem;
 }
 
 .emptyCard .primaryBtn {
   width: auto;
   min-width: 220px;
-  margin-top: 0.38rem;
+  margin-top: 0.35rem;
 }
 
 @media (max-width: 980px) {
@@ -436,11 +451,7 @@
 
 @media (max-width: 760px) {
   .page {
-    padding: 0.9rem 0 0.7rem;
-  }
-
-  .shell {
-    width: min(1200px, 100% - 1rem);
+    padding: 0.9rem 0 2rem;
   }
 
   .topRow {
@@ -454,20 +465,51 @@
 
 @media (max-width: 620px) {
   .itemCard {
-    grid-template-columns: 84px minmax(0, 1fr);
+    grid-template-columns: 52px minmax(0, 1fr);
     padding: 0.65rem;
-    border-radius: 14px;
+    border-radius: 15px;
   }
 
   .itemPrice {
-    font-size: 1.06rem;
+    font-size: 0.98rem;
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .itemTop {
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .itemTitle {
+    font-size: 0.94rem;
+    line-height: 1.28;
   }
 
   .qtyControl {
-    grid-template-columns: 31px 40px 31px;
+    --quantity-selector-width: 104px;
+    height: 32px;
+  }
+
+  .qtyControl button {
+    width: 30px;
+    height: 30px;
   }
 
   .summaryCard {
-    border-radius: 14px;
+    border-radius: 15px;
+  }
+
+  .removeBtn {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 50%;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .removeText {
+    display: none;
   }
 }

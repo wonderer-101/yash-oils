@@ -82,14 +82,14 @@
 .brandMark img {
   height: 52px;
   width: auto;
-  max-width: 220px;
+  max-width: 180px;
   object-fit: contain;
 }
 
 /* ===== Heading ===== */
 .title {
   text-align: center;
-  font-family: var(--font-heading), "Georgia", serif;
+  font-family: var(--font-cormorant), "Georgia", serif;
   font-size: 1.95rem;
   font-weight: 700;
   color: #3b0b08;
@@ -123,7 +123,7 @@
   background: linear-gradient(135deg, #800000 0%, #5e0000 100%);
   color: #ffe8d2;
   border-radius: 10px;
-  font-family: var(--font-body), sans-serif;
+  font-family: var(--font-manrope), sans-serif;
   font-size: 0.82rem;
   font-weight: 800;
   letter-spacing: 0.07em;

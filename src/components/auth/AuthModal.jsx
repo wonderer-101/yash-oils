@@ -48,10 +48,10 @@ export default function AuthModal({ isOpen, onClose }) {
         {/* Logo */}
         <div className={styles.brandMark}>
           <Image
-            src="/icons/yash-logo.svg"
-            alt="Yash World of Wellness"
-            width={210}
-            height={58}
+            src="/icons/main-logo.svg"
+            alt="Himanshu Beads"
+            width={160}
+            height={56}
             priority
           />
         </div>
