@@ -13,9 +13,19 @@ import {
   makeTokenCookieOptions,
   COOKIE_ACCESS_TOKEN,
   COOKIE_REFRESH_TOKEN,
+  COOKIE_ID_TOKEN,
   COOKIE_STATE,
   COOKIE_VERIFIER,
+  COOKIE_RETURN_TO,
 } from "@/lib/shopify/customerAuth";
+
+function normalizeReturnTo(value) {
+  const target = String(value || "").trim();
+  if (!target.startsWith("/")) return "";
+  if (target.startsWith("//")) return "";
+  if (/[\r\n]/.test(target)) return "";
+  return target;
+}
 
 export async function GET(request) {
   const appUrl = resolveAppUrl(request);
@@ -41,6 +51,7 @@ export async function GET(request) {
     const cookieStore = await cookies();
     const savedState = cookieStore.get(COOKIE_STATE)?.value;
     const codeVerifier = cookieStore.get(COOKIE_VERIFIER)?.value;
+    const returnTo = normalizeReturnTo(cookieStore.get(COOKIE_RETURN_TO)?.value);
 
     // Verify CSRF state
     if (!savedState || savedState !== returnedState) {
@@ -53,15 +64,16 @@ export async function GET(request) {
     }
 
     // Exchange code for tokens
-    const { accessToken, refreshToken, expiresIn } = await exchangeCodeForToken({
+    const { accessToken, refreshToken, expiresIn, idToken } = await exchangeCodeForToken({
       code,
       codeVerifier,
       redirectUri,
       origin: appUrl,
     });
 
-    // Redirect to profile page after successful login
-    const response = NextResponse.redirect(`${appUrl}/profile`);
+    // Redirect back to requested path when present, else homepage.
+    const redirectTarget = returnTo ? `${appUrl}${returnTo}` : `${appUrl}/`;
+    const response = NextResponse.redirect(redirectTarget);
 
     // Store access token (expire with token lifetime)
     response.headers.append(
@@ -77,10 +89,18 @@ export async function GET(request) {
       );
     }
 
+    if (idToken) {
+      response.headers.append(
+        "Set-Cookie",
+        serializeCookie(COOKIE_ID_TOKEN, idToken, makeTokenCookieOptions(60 * 60 * 24 * 30))
+      );
+    }
+
     // Clear PKCE cookies
     const clearOpts = { httpOnly: true, secure: process.env.NODE_ENV === "production", sameSite: "lax", path: "/", maxAge: 0 };
     response.headers.append("Set-Cookie", serializeCookie(COOKIE_STATE, "", clearOpts));
     response.headers.append("Set-Cookie", serializeCookie(COOKIE_VERIFIER, "", clearOpts));
+    response.headers.append("Set-Cookie", serializeCookie(COOKIE_RETURN_TO, "", clearOpts));
 
     return response;
   } catch (err) {

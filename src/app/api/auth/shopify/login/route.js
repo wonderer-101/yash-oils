@@ -14,11 +14,22 @@ import {
   serializeCookie,
   COOKIE_STATE,
   COOKIE_VERIFIER,
+  COOKIE_RETURN_TO,
 } from "@/lib/shopify/customerAuth";
+
+function normalizeReturnTo(value) {
+  const target = String(value || "").trim();
+  if (!target.startsWith("/")) return "";
+  if (target.startsWith("//")) return "";
+  if (/[\r\n]/.test(target)) return "";
+  return target;
+}
 
 export async function GET(request) {
   const appUrl = resolveAppUrl(request);
   try {
+    const { searchParams } = new URL(request.url);
+    const returnTo = normalizeReturnTo(searchParams.get("return_to"));
     const redirectUri = `${appUrl}/api/auth/shopify/callback`;
 
     // Generate PKCE params
@@ -36,6 +47,8 @@ export async function GET(request) {
     const response = NextResponse.redirect(authUrl);
     response.headers.append("Set-Cookie", serializeCookie(COOKIE_STATE, state, stateOpts));
     response.headers.append("Set-Cookie", serializeCookie(COOKIE_VERIFIER, codeVerifier, verifierOpts));
+    const targetAfterLogin = returnTo || "/";
+    response.headers.append("Set-Cookie", serializeCookie(COOKIE_RETURN_TO, targetAfterLogin, stateOpts));
 
     return response;
   } catch (err) {

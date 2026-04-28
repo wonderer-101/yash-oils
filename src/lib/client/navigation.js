@@ -8,6 +8,12 @@ export function replaceTo(url) {
   window.location.replace(url);
 }
 
-export function redirectToShopifyLogin() {
+export function redirectToShopifyLogin(returnTo = "") {
+  const target = String(returnTo || "").trim();
+  if (target.startsWith("/")) {
+    const encoded = encodeURIComponent(target);
+    redirectTo(`/api/auth/shopify/login?return_to=${encoded}`);
+    return;
+  }
   redirectTo("/api/auth/shopify/login");
 }

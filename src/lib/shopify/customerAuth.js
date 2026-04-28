@@ -282,8 +282,10 @@ export async function fetchCustomerProfile(accessToken, origin) {
 
 export const COOKIE_ACCESS_TOKEN = "shopify_ca_token";
 export const COOKIE_REFRESH_TOKEN = "shopify_ca_refresh";
+export const COOKIE_ID_TOKEN = "shopify_ca_id_token";
 export const COOKIE_STATE = "shopify_oauth_state";
 export const COOKIE_VERIFIER = "shopify_oauth_verifier";
+export const COOKIE_RETURN_TO = "shopify_oauth_return_to";
 
 export function makeTokenCookieOptions(expiresIn = 86400) {
   return {
