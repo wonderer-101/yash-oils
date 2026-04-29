@@ -44,6 +44,37 @@ export default function Header() {
     return () => window.removeEventListener("hashchange", syncHash);
   }, [pathname]);
 
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    if (!mobileOpen && !searchOpen) return;
+
+    function onKeyDown(event) {
+      if (event.key !== "Escape") return;
+      setMobileOpen(false);
+      setSearchOpen(false);
+    }
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [mobileOpen, searchOpen]);
+
+  useEffect(() => {
+    function onResize() {
+      if (window.innerWidth > 1024) {
+        setMobileOpen(false);
+      }
+    }
+
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
   function handleSearchSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -68,7 +99,15 @@ export default function Header() {
           </button>
 
           <Link href="/" className={styles.brand} aria-label="Yash World of Wellness">
-            <Image src="/icons/yash-logo.svg" alt="Yash World of Wellness" width={240} height={66} priority />
+            <Image
+              src="/icons/yash-logo.svg"
+              alt="Yash World of Wellness"
+              width={240}
+              height={66}
+              priority
+              className={styles.brandLogo}
+            />
+            <span className={styles.brandText}>Swecha Pain Relief</span>
           </Link>
 
           <nav className={styles.nav} aria-label="Primary navigation">
@@ -119,19 +158,51 @@ export default function Header() {
           </form>
         </div>
 
-        <div className={styles.mobileNav} data-open={mobileOpen ? "true" : "false"}>
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              data-active={isActive(pathname, currentHash, item.href)}
-              onClick={() => setMobileOpen(false)}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </div>
       </header>
+
+      <nav
+        className={`${styles.mobileDrawer} ${mobileOpen ? styles.mobileDrawerOpen : ""}`}
+        id="mobile-nav"
+        aria-label="Mobile navigation"
+      >
+        <div className={styles.drawerTop}>
+          <Link href="/" className={styles.drawerBrand} onClick={() => setMobileOpen(false)}>
+            <Image
+              src="/icons/yash-logo.svg"
+              alt="Yash World of Wellness"
+              width={170}
+              height={48}
+              className={styles.drawerLogo}
+            />
+            <span className={styles.drawerText}>Swecha Pain Relief</span>
+          </Link>
+          <button
+            type="button"
+            className={styles.drawerClose}
+            aria-label="Close menu"
+            onClick={() => setMobileOpen(false)}
+          >
+            <X size={20} />
+          </button>
+        </div>
+
+        {navItems.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            data-active={isActive(pathname, currentHash, item.href)}
+            onClick={() => setMobileOpen(false)}
+          >
+            {item.label}
+          </Link>
+        ))}
+      </nav>
+
+      <div
+        className={`${styles.backdrop} ${mobileOpen ? styles.backdropVisible : ""}`}
+        aria-hidden="true"
+        onClick={() => setMobileOpen(false)}
+      />
     </>
   );
 }

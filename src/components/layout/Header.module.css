@@ -38,12 +38,21 @@
 .brand {
   display: inline-flex;
   align-items: center;
-  line-height: 0;
+  gap: 0.4rem;
 }
 
-.brand img {
+.brandLogo {
   width: auto;
   height: 52px;
+}
+
+.brandText {
+  color: var(--yw-brand-dark);
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .nav {
@@ -150,6 +159,11 @@
   display: none;
 }
 
+.mobileDrawer,
+.backdrop {
+  display: none;
+}
+
 @media (max-width: 1024px) {
   .headerOffset {
     height: 74px;
@@ -168,32 +182,141 @@
     display: none;
   }
 
-  .brand img {
+  .brandLogo {
     height: 42px;
   }
 
-  .mobileNav {
-    display: block;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 220ms ease;
-    border-top: 1px solid var(--yw-line);
+  .brandText {
+    font-size: 0.8rem;
   }
 
-  .mobileNav[data-open="true"] {
-    max-height: 320px;
+  .mobileDrawer {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: min(300px, 86vw);
+    z-index: 1200;
+    background: #fff;
+    border-right: 1px solid var(--yw-line);
+    box-shadow: 8px 0 26px rgba(22, 45, 31, 0.2);
+    padding: 0 0.85rem 1rem;
+    gap: 0.2rem;
+    overflow-y: auto;
+    transform: translateX(-104%);
+    transition: transform 320ms ease;
+    pointer-events: none;
   }
 
-  .mobileNav a {
-    width: min(1200px, 100% - 2rem);
-    margin: 0 auto;
+  .mobileDrawerOpen {
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+
+  .drawerTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    padding: 0.9rem 0.3rem 0.75rem;
     border-bottom: 1px solid var(--yw-line);
-    padding: 0.9rem 0.2rem;
-    color: var(--yw-subtle);
   }
 
-  .mobileNav a[data-active="true"] {
+  .drawerBrand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-height: 38px;
+  }
+
+  .drawerLogo {
+    width: auto;
+    height: 34px;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .drawerText {
     color: var(--yw-brand-dark);
+    font-size: 0.76rem;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    align-self: center;
+    transform: translateY(-3px);
+  }
+
+  .drawerClose {
+    border: 1px solid var(--yw-line);
+    background: #fff;
+    color: var(--yw-ink);
+    width: 2.1rem;
+    height: 2.1rem;
+    border-radius: 0.52rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .mobileDrawer a {
+    display: block;
+    border-bottom: 1px solid var(--yw-line);
+    padding: 0.78rem 0.3rem;
+    color: var(--yw-subtle);
+    font-size: 0.96rem;
     font-weight: 600;
+    text-decoration: none;
+  }
+
+  .mobileDrawer a[data-active="true"] {
+    color: var(--yw-brand-dark);
+    background: var(--yw-brand-soft);
+    border-radius: 0.45rem;
+    border-bottom-color: transparent;
+    padding-inline: 0.5rem;
+  }
+
+  .backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    background: rgba(17, 33, 23, 0.42);
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 220ms ease;
+  }
+
+  .backdropVisible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .inner {
+    width: min(1200px, 100% - 1rem);
+    gap: 0.55rem;
+  }
+
+  .brandText {
+    font-size: 0.62rem;
+  }
+
+  .brandLogo {
+    height: 38px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .mobileDrawer,
+  .backdrop {
+    display: none !important;
   }
 }
